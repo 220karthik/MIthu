@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import { Heart, Star, Sparkles } from 'lucide-react';
+import thank from '../images/thankyou.jpg'; 
 
 const ThankYouPage = () => {
   const [showText, setShowText] = useState(false);
@@ -16,8 +17,9 @@ const ThankYouPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-pink-900 to-rose-900 relative overflow-hidden flex items-center justify-center">
       {/* Animated Background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:30px_30px] animate-pulse" />
+     <div>
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${thank})` }} />
+        <div className="absolute inset-0 bg-black opacity-50" />  
       </div>
 
       {/* Floating Stars */}

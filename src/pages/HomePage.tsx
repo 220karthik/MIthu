@@ -1,6 +1,6 @@
-
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import bg from '../images/home.jpg';
 
 const HomePage = () => {
   const [showContinue, setShowContinue] = useState(false);
@@ -20,36 +20,41 @@ const HomePage = () => {
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1649972904349-6e44c42644a7?q=80&w=2070&auto=format&fit=crop')`,
-        }}
-      >
-        <div className="absolute inset-0 bg-black/40" />
-      </div>
+      {/* 🔧 --- Local keyframes for the “open‑close” effect --- */}
+      <style>{`
+        @keyframes openClose {
+          0%   { letter-spacing: -0.3em; opacity: 0; }
+          50%  { letter-spacing: 0.1em;  opacity: 1; }
+          100% { letter-spacing: -0.3em; opacity: 0; }
+        }
+      `}</style>
 
-      {/* Content */}
+      {/* 🌄 Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${bg})` }}
+      />
+
+      {/* 🎉 Foreground Content */}
       <div className="relative z-10 flex h-full items-center justify-center">
-        <div className="text-center">
-          {/* Animated Birthday Text */}
-          <h1 className="mb-8 text-6xl md:text-8xl font-bold text-white drop-shadow-2xl animate-fade-in">
-            <span className="inline-block animate-[bounce_2s_infinite] text-yellow-300">H</span>
-            <span className="inline-block animate-[bounce_2s_infinite_0.1s] text-pink-300">A</span>
-            <span className="inline-block animate-[bounce_2s_infinite_0.2s] text-blue-300">P</span>
-            <span className="inline-block animate-[bounce_2s_infinite_0.3s] text-green-300">P</span>
-            <span className="inline-block animate-[bounce_2s_infinite_0.4s] text-purple-300">Y</span>
-            <span className="mx-4 inline-block animate-[bounce_2s_infinite_0.5s] text-orange-300">🎉</span>
+        <div className="text-center select-none">
+          {/* "Happy Birthday" → single line */}
+          <h1 className="mb-4 text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 bg-clip-text text-transparent drop-shadow-2xl animate-[fade-in_1s_ease-out_0.5s_both]">
+            Happy Birthday
           </h1>
-          
-          <h2 className="mb-4 text-4xl md:text-6xl font-bold text-white drop-shadow-xl animate-[fade-in_1s_ease-out_1s_both]">
-            BIRTHDAY
-          </h2>
-          
-          <h3 className="mb-8 text-5xl md:text-7xl font-bold bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 bg-clip-text text-transparent drop-shadow-lg animate-[fade-in_1s_ease-out_2s_both]">
+
+          {/* "MITHRAN" with open‑close animation */}
+          <h2
+            className="mb-12 text-6xl md:text-8xl font-extrabold text-white drop-shadow-lg"
+            style={{
+              animation: 'openClose 4s ease-in-out infinite',
+              background: 'linear-gradient(90deg,#ff6b6b,#fbc531,#9c88ff)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
             MITHRAN
-          </h3>
+          </h2>
 
           {/* Continue Button */}
           {showContinue && (
@@ -63,7 +68,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      {/* Floating Birthday Elements */}
+      {/* ✨ Floating Birthday Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 text-4xl animate-[bounce_3s_infinite] opacity-80">🎂</div>
         <div className="absolute top-32 right-16 text-3xl animate-[bounce_3s_infinite_1s] opacity-80">🎈</div>
