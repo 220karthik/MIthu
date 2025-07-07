@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, Music } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 
 const GalleryPage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -11,29 +11,30 @@ const GalleryPage = () => {
   const images = [
     {
       url: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop',
-      caption: 'Beautiful Memories'
+      caption: 'Cherished Moments'
     },
     {
       url: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop',
-      caption: 'Special Moments'
+      caption: 'Timeless Memories'
     },
     {
       url: 'https://images.unsplash.com/photo-1500673922987-e212871fec22?q=80&w=2070&auto=format&fit=crop',
-      caption: 'Wonderful Times'
+      caption: 'Beautiful Journey'
     },
     {
       url: 'https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?q=80&w=2070&auto=format&fit=crop',
-      caption: 'Magical Nights'
+      caption: 'Peaceful Evening'
     }
   ];
 
   useEffect(() => {
+    if (!isPlaying) return;
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % images.length);
-    }, 4000);
+    }, 5000);
 
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, [images.length, isPlaying]);
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % images.length);
@@ -48,110 +49,93 @@ const GalleryPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px]" />
-      </div>
-
-      {/* Header */}
-      <div className="relative z-10 pt-8 pb-4 text-center">
-        <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-400 bg-clip-text text-transparent animate-fade-in">
-          Memory Gallery
+    <div className="min-h-screen bg-gradient-to-br from-stone-50 to-neutral-100">
+      {/* Clean Header */}
+      <div className="pt-16 pb-8 text-center">
+        <h1 className="text-5xl md:text-6xl font-light text-gray-800 animate-fade-in">
+          Gallery
         </h1>
-        <p className="text-white/80 text-lg mt-2 animate-[fade-in_1s_ease-out_0.5s_both]">
-          Celebrating beautiful moments
+        <div className="mt-4 w-24 h-0.5 bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto" />
+        <p className="text-gray-600 text-lg mt-6 font-light animate-[fade-in_1s_ease-out_0.5s_both]">
+          A collection of beautiful moments
         </p>
       </div>
 
-      {/* Music Control */}
-      <div className="absolute top-6 right-6 z-20">
+      {/* Media Controls */}
+      <div className="absolute top-8 right-8 z-20">
         <button
           onClick={() => setIsPlaying(!isPlaying)}
-          className="bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all duration-300"
+          className="bg-white/80 backdrop-blur-sm text-gray-700 p-3 rounded-full hover:bg-white hover:shadow-lg transition-all duration-300 border border-gray-200"
         >
-          <Music className={`w-6 h-6 ${isPlaying ? 'animate-pulse' : ''}`} />
+          {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
         </button>
       </div>
 
-      {/* Gallery Container */}
-      <div className="relative h-[60vh] mx-4 md:mx-8 lg:mx-16 rounded-2xl overflow-hidden shadow-2xl">
-        {/* Image Display */}
-        <div className="relative h-full">
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 transition-all duration-1000 transform ${
-                index === currentImageIndex
-                  ? 'opacity-100 scale-100'
-                  : 'opacity-0 scale-105'
-              }`}
-            >
-              <img
-                src={image.url}
-                alt={image.caption}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              <div className="absolute bottom-8 left-8 text-white">
-                <h3 className="text-2xl font-bold mb-2">{image.caption}</h3>
-                <p className="text-white/80">Making every moment special</p>
+      {/* Modern Gallery Container */}
+      <div className="relative max-w-5xl mx-auto px-8">
+        <div className="relative h-[70vh] bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
+          {/* Image Display */}
+          <div className="relative h-full">
+            {images.map((image, index) => (
+              <div
+                key={index}
+                className={`absolute inset-0 transition-all duration-1000 ${
+                  index === currentImageIndex
+                    ? 'opacity-100 scale-100'
+                    : 'opacity-0 scale-105'
+                }`}
+              >
+                <img
+                  src={image.url}
+                  alt={image.caption}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                <div className="absolute bottom-8 left-8 text-white">
+                  <h3 className="text-3xl font-light mb-2">{image.caption}</h3>
+                  <p className="text-white/80 font-light">Every moment tells a story</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Navigation Arrows */}
-        <button
-          onClick={prevImage}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-2 rounded-full hover:bg-white/30 transition-all duration-300"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
-        <button
-          onClick={nextImage}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-2 rounded-full hover:bg-white/30 transition-all duration-300"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
+          {/* Minimal Navigation */}
+          <button
+            onClick={prevImage}
+            className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white/90 backdrop-blur-sm text-gray-700 p-3 rounded-full hover:bg-white hover:shadow-lg transition-all duration-300 border border-gray-200"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={nextImage}
+            className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white/90 backdrop-blur-sm text-gray-700 p-3 rounded-full hover:bg-white hover:shadow-lg transition-all duration-300 border border-gray-200"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
 
-        {/* Dots Indicator */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-          {images.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentImageIndex(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentImageIndex ? 'bg-white' : 'bg-white/40'
-              }`}
-            />
-          ))}
+          {/* Elegant Indicators */}
+          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3">
+            {images.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentImageIndex ? 'bg-white w-8' : 'bg-white/50'
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Next Button */}
-      <div className="text-center mt-12 pb-8">
+      {/* Clean Next Button */}
+      <div className="text-center mt-16 pb-16">
         <button
           onClick={handleNext}
-          className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-12 py-4 rounded-full text-xl font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 animate-[fade-in_1s_ease-out_2s_both]"
+          className="px-12 py-4 text-lg font-light text-gray-700 bg-white/70 backdrop-blur-sm border border-gray-200 rounded-full hover:bg-white hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 animate-[fade-in_1s_ease-out_2s_both]"
         >
-          Share Your Wishes 💝
+          Share Your Wishes
         </button>
-      </div>
-
-      {/* Floating Particles */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 bg-white/20 rounded-full animate-[float_6s_ease-in-out_infinite]"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 6}s`,
-            }}
-          />
-        ))}
       </div>
     </div>
   );

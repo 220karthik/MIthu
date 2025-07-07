@@ -1,6 +1,5 @@
 
 import { useEffect, useState } from 'react';
-import { Heart, Star, Sparkles } from 'lucide-react';
 
 const ThankYouPage = () => {
   const [showText, setShowText] = useState(false);
@@ -14,92 +13,59 @@ const ThankYouPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-pink-900 to-rose-900 relative overflow-hidden flex items-center justify-center">
-      {/* Animated Background */}
+    <div className="min-h-screen bg-gradient-to-br from-stone-50 via-neutral-100 to-slate-100 relative overflow-hidden flex items-center justify-center">
+      {/* Subtle Background Pattern */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:30px_30px] animate-pulse" />
-      </div>
-
-      {/* Floating Stars */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute animate-[twinkle_3s_ease-in-out_infinite]"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-            }}
-          >
-            <Star className="w-4 h-4 text-yellow-300 fill-current" />
-          </div>
-        ))}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(0,0,0,0.02)_0%,transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,rgba(0,0,0,0.01)_0%,transparent_70%)]" />
       </div>
 
       {/* Main Content */}
-      <div className="text-center z-10 px-4">
-        {/* Heart Animation */}
-        <div className="mb-8 animate-[fade-in_1s_ease-out]">
-          <Heart className="w-20 h-20 text-pink-400 mx-auto animate-[heartbeat_2s_ease-in-out_infinite] fill-current" />
-        </div>
-
+      <div className="text-center z-10 px-8 max-w-4xl">
         {/* Tamil Thank You Text */}
         {showText && (
           <div className="animate-[fade-in_2s_ease-out]">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 drop-shadow-2xl">
-              <span className="inline-block animate-[bounce_2s_infinite] text-yellow-300">உ</span>
-              <span className="inline-block animate-[bounce_2s_infinite_0.1s] text-pink-300">ங்</span>
-              <span className="inline-block animate-[bounce_2s_infinite_0.2s] text-blue-300">க</span>
-              <span className="inline-block animate-[bounce_2s_infinite_0.3s] text-green-300">ள்</span>
-              <span className="mx-2"></span>
-              <span className="inline-block animate-[bounce_2s_infinite_0.4s] text-purple-300">வ</span>
-              <span className="inline-block animate-[bounce_2s_infinite_0.5s] text-orange-300">ா</span>
-              <span className="inline-block animate-[bounce_2s_infinite_0.6s] text-cyan-300">ழ்</span>
-              <span className="inline-block animate-[bounce_2s_infinite_0.7s] text-red-300">த்</span>
-              <span className="inline-block animate-[bounce_2s_infinite_0.8s] text-indigo-300">து</span>
-              <span className="inline-block animate-[bounce_2s_infinite_0.9s] text-emerald-300">க</span>
-              <span className="inline-block animate-[bounce_2s_infinite_1s] text-rose-300">ள்</span>
-              <span className="inline-block animate-[bounce_2s_infinite_1.1s] text-violet-300">க்</span>
-              <span className="inline-block animate-[bounce_2s_infinite_1.2s] text-amber-300">கு</span>
-            </h1>
-            
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-8 animate-[fade-in_1s_ease-out_1s_both] drop-shadow-xl">
-              <span className="inline-block animate-[bounce_2s_infinite_1.3s] text-teal-300">ந</span>
-              <span className="inline-block animate-[bounce_2s_infinite_1.4s] text-lime-300">ன்</span>
-              <span className="inline-block animate-[bounce_2s_infinite_1.5s] text-sky-300">றி</span>
-            </h2>
+            <div className="mb-12">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-light text-gray-800 mb-8 tracking-wide">
+                உங்கள் வாழ்த்துகளுக்கு
+              </h1>
+              <h2 className="text-6xl md:text-8xl lg:text-9xl font-thin text-gray-700 mb-12">
+                நன்றி
+              </h2>
+              <div className="w-32 h-0.5 bg-gradient-to-r from-transparent via-gray-400 to-transparent mx-auto mb-8" />
+            </div>
 
             {/* English Translation */}
-            <p className="text-xl md:text-2xl text-white/80 mb-8 animate-[fade-in_1s_ease-out_2s_both] italic">
-              Thank you for your wishes
-            </p>
-
-            {/* Sparkles Animation */}
-            <div className="flex justify-center space-x-4 animate-[fade-in_1s_ease-out_2.5s_both]">
-              <Sparkles className="w-8 h-8 text-yellow-400 animate-spin" />
-              <Sparkles className="w-6 h-6 text-pink-400 animate-ping" />
-              <Sparkles className="w-8 h-8 text-purple-400 animate-spin" style={{ animationDirection: 'reverse' }} />
+            <div className="mb-16 animate-[fade-in_1s_ease-out_1s_both]">
+              <p className="text-2xl md:text-3xl text-gray-600 font-light italic tracking-wide">
+                Thank you for your wishes
+              </p>
             </div>
 
             {/* Final Message */}
-            <div className="mt-12 animate-[fade-in_1s_ease-out_3s_both]">
-              <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
-                Your heartfelt wishes have made Mithran's birthday celebration truly special and memorable. 
-                Each message brings joy and warmth to this wonderful day!
+            <div className="animate-[fade-in_1s_ease-out_2s_both]">
+              <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed font-light">
+                Your heartfelt messages have made Mithran's birthday celebration truly meaningful and memorable. 
+                Each wish brings warmth and joy to this special day.
+              </p>
+            </div>
+
+            {/* Elegant Signature */}
+            <div className="mt-16 animate-[fade-in_1s_ease-out_3s_both]">
+              <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-gray-300 to-transparent mx-auto mb-4" />
+              <p className="text-gray-400 font-light text-sm tracking-widest">
+                WITH GRATITUDE
               </p>
             </div>
           </div>
         )}
 
-        {/* Floating Celebration Icons */}
+        {/* Minimal Floating Elements */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-20 text-4xl animate-[float_4s_ease-in-out_infinite] opacity-60">🎂</div>
-          <div className="absolute top-32 right-16 text-3xl animate-[float_4s_ease-in-out_infinite_1s] opacity-60">🎈</div>
-          <div className="absolute bottom-40 left-16 text-3xl animate-[float_4s_ease-in-out_infinite_2s] opacity-60">🎁</div>
-          <div className="absolute bottom-32 right-20 text-4xl animate-[float_4s_ease-in-out_infinite_0.5s] opacity-60">🌟</div>
-          <div className="absolute top-1/2 left-10 text-2xl animate-[float_4s_ease-in-out_infinite_1.5s] opacity-60">💝</div>
-          <div className="absolute top-1/3 right-10 text-2xl animate-[float_4s_ease-in-out_infinite_2.5s] opacity-60">🎊</div>
+          <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-gray-300 rounded-full animate-[float_12s_ease-in-out_infinite] opacity-40" />
+          <div className="absolute top-1/3 right-1/3 w-0.5 h-0.5 bg-gray-400 rounded-full animate-[float_8s_ease-in-out_infinite_2s] opacity-30" />
+          <div className="absolute bottom-1/3 left-1/5 w-1.5 h-1.5 bg-gray-200 rounded-full animate-[float_10s_ease-in-out_infinite_4s] opacity-50" />
+          <div className="absolute bottom-1/4 right-1/4 w-1 h-1 bg-gray-300 rounded-full animate-[float_14s_ease-in-out_infinite_1s] opacity-35" />
         </div>
       </div>
     </div>

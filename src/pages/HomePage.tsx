@@ -19,56 +19,53 @@ const HomePage = () => {
   };
 
   return (
-    <div className="relative h-screen w-full overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1649972904349-6e44c42644a7?q=80&w=2070&auto=format&fit=crop')`,
-        }}
-      >
-        <div className="absolute inset-0 bg-black/40" />
+    <div className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-stone-50 via-neutral-100 to-slate-100">
+      {/* Modern Background Pattern */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(0,0,0,0.02)_0%,transparent_50%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(0,0,0,0.01)_25%,transparent_25%,transparent_75%,rgba(0,0,0,0.01)_75%)] bg-[length:60px_60px]" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 flex h-full items-center justify-center">
-        <div className="text-center">
-          {/* Animated Birthday Text */}
-          <h1 className="mb-8 text-6xl md:text-8xl font-bold text-white drop-shadow-2xl animate-fade-in">
-            <span className="inline-block animate-[bounce_2s_infinite] text-yellow-300">H</span>
-            <span className="inline-block animate-[bounce_2s_infinite_0.1s] text-pink-300">A</span>
-            <span className="inline-block animate-[bounce_2s_infinite_0.2s] text-blue-300">P</span>
-            <span className="inline-block animate-[bounce_2s_infinite_0.3s] text-green-300">P</span>
-            <span className="inline-block animate-[bounce_2s_infinite_0.4s] text-purple-300">Y</span>
-            <span className="mx-4 inline-block animate-[bounce_2s_infinite_0.5s] text-orange-300">🎉</span>
-          </h1>
-          
-          <h2 className="mb-4 text-4xl md:text-6xl font-bold text-white drop-shadow-xl animate-[fade-in_1s_ease-out_1s_both]">
-            BIRTHDAY
-          </h2>
-          
-          <h3 className="mb-8 text-5xl md:text-7xl font-bold bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 bg-clip-text text-transparent drop-shadow-lg animate-[fade-in_1s_ease-out_2s_both]">
-            MITHRAN
-          </h3>
+      {/* Elegant Hero Section */}
+      <div className="relative z-10 flex h-full items-center justify-center px-8">
+        <div className="text-center max-w-4xl">
+          {/* Minimalist Birthday Text */}
+          <div className="mb-12">
+            <h1 className="text-7xl md:text-9xl font-light text-gray-800 mb-4 animate-[fade-in_2s_ease-out]">
+              HAPPY
+            </h1>
+            <h2 className="text-5xl md:text-7xl font-thin text-gray-600 mb-6 animate-[fade-in_2s_ease-out_0.5s_both]">
+              BIRTHDAY
+            </h2>
+            <div className="relative">
+              <h3 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 bg-clip-text text-transparent animate-[fade-in_2s_ease-out_1s_both]">
+                MITHRAN
+              </h3>
+              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-0.5 bg-gradient-to-r from-transparent via-gray-400 to-transparent animate-[fade-in_1s_ease-out_2s_both]" />
+            </div>
+          </div>
 
-          {/* Continue Button */}
+          {/* Elegant Continue Button */}
           {showContinue && (
-            <button
-              onClick={handleContinue}
-              className="animate-[fade-in_1s_ease-out] bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-8 py-4 rounded-full text-xl font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 animate-pulse"
-            >
-              Click to Continue ✨
-            </button>
+            <div className="animate-[fade-in_1.5s_ease-out]">
+              <button
+                onClick={handleContinue}
+                className="group relative px-8 py-4 text-lg font-medium text-gray-700 bg-white/70 backdrop-blur-sm border border-gray-200 rounded-full hover:bg-white hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1"
+              >
+                <span className="relative z-10">Continue</span>
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-gray-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </button>
+            </div>
           )}
         </div>
       </div>
 
-      {/* Floating Birthday Elements */}
+      {/* Subtle Floating Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 text-4xl animate-[bounce_3s_infinite] opacity-80">🎂</div>
-        <div className="absolute top-32 right-16 text-3xl animate-[bounce_3s_infinite_1s] opacity-80">🎈</div>
-        <div className="absolute bottom-40 left-20 text-3xl animate-[bounce_3s_infinite_2s] opacity-80">🎁</div>
-        <div className="absolute bottom-20 right-10 text-4xl animate-[bounce_3s_infinite_0.5s] opacity-80">🌟</div>
+        <div className="absolute top-20 left-20 w-2 h-2 bg-gray-300 rounded-full animate-[float_8s_ease-in-out_infinite] opacity-60" />
+        <div className="absolute top-40 right-32 w-1 h-1 bg-gray-400 rounded-full animate-[float_6s_ease-in-out_infinite_2s] opacity-40" />
+        <div className="absolute bottom-32 left-16 w-3 h-3 bg-gray-200 rounded-full animate-[float_10s_ease-in-out_infinite_4s] opacity-50" />
+        <div className="absolute bottom-20 right-20 w-1.5 h-1.5 bg-gray-350 rounded-full animate-[float_7s_ease-in-out_infinite_1s] opacity-30" />
       </div>
     </div>
   );
