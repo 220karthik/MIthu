@@ -32,7 +32,7 @@ const Wishes = () => {
 
         <div className="w-full max-w-2xl bg-white/80 backdrop-blur-md rounded-xl p-4 shadow-2xl overflow-hidden">
           <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLScMPGkYZ6Q_6R_mKEIIOZ9hSr0JxAsa91muMEL7DGB4wNHmNw/viewform?embedded=true"
+            src="https://docs.google.com/forms/d/e/1FAIpQLSfnC8wlEN2NmYwAOvx_-lmO9ywZ3sutozB08HQanCrAtODE5g/viewform?usp=dialog"
             width="100%"
             height="600"
             frameBorder="0"

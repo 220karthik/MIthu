@@ -38,9 +38,9 @@ const HomePage = () => {
       {/* 🎉 Foreground Content */}
       <div className="relative z-10 flex h-full items-center justify-center">
         <div className="text-center select-none">
-          {/* "Happy Birthday" → single line */}
+          {/* "Happy Second Birthday" → single line */}
           <h1 className="mb-4 text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 bg-clip-text text-transparent drop-shadow-2xl animate-[fade-in_1s_ease-out_0.5s_both]">
-            Happy Birthday
+            Happy Second 💙 Birthday🎉
           </h1>
 
           {/* "MITHRAN" with open‑close animation */}

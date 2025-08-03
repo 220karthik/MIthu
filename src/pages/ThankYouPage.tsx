@@ -88,7 +88,7 @@ const ThankYouPage = () => {
             <div className="mt-12 animate-[fade-in_1s_ease-out_3s_both]">
               <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
                 Your heartfelt wishes have made Mithran's birthday celebration truly special and memorable. 
-                Each message brings joy and warmth to this wonderful day!
+                Each of your messages brought joy and warmth to this wonderful day!
               </p>
             </div>
           </div>
